@@ -14,10 +14,10 @@ public class KafkaMessagePublisher {
     public KafkaTemplate<String, Object> template;
 
     public void SendMessageToTopics(String message) {
-        CompletableFuture<SendResult<String, Object>> send = template.send("my kafka practice!!", message);
+        CompletableFuture<SendResult<String, Object>> send = template.send("my_kafka_practice", message);
         send.whenComplete((result, ex) -> {
             if (ex == null) {
-                System.out.println("Sent Message=[" + message + "With offset=[" + result.getRecordMetadata().offset());
+                System.out.println("Sent Message=[" + message + " With offset=[" + result.getRecordMetadata().offset());
             } else {
                 System.out.println("Unable to Sent Message=[" + message + "With offset=[" + ex.getMessage());
 
